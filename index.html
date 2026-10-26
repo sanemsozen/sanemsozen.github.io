@@ -39,7 +39,7 @@
         header {
             background: linear-gradient(135deg, #0b2545 0%, #1b4965 100%);
             color: white;
-            padding: 60px 20px 50px;
+            padding: 70px 20px 60px;
             text-align: center;
             position: relative;
         }
@@ -53,25 +53,30 @@
         }
 
         .profile-avatar {
-            width: 130px;
-            height: 130px;
+            width: 200px; /* Fotoğraf büyütüldü */
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--soft-blue);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
+            border: 5px solid var(--soft-blue);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.03);
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
+            font-size: 3rem;
             letter-spacing: 2px;
             margin-bottom: 8px;
             font-weight: 700;
         }
 
         .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--soft-blue);
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -181,11 +186,12 @@
         }
 
         .insta-img {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid white;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .insta-text h3 {
@@ -376,17 +382,39 @@
             background-color: #0b2545;
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             margin-top: 80px;
+            border-top: 3px solid var(--soft-blue);
+        }
+
+        footer .footer-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         footer p {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: var(--soft-blue);
+            opacity: 0.9;
+        }
+
+        footer .copyright {
+            font-size: 0.8rem;
+            color: #8da9c4;
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
+            .profile-avatar { width: 150px; height: 150px; }
             .gallery-grid { grid-template-columns: 1fr; }
             .about-card { padding: 25px; }
             .insta-banner { flex-direction: column; text-align: center; }
@@ -399,7 +427,7 @@
     <!-- HEADER -->
     <header>
         <div class="header-content">
-            <!-- Sanem'in Profil Fotoğrafı -->
+            <!-- Sanem'in Profil Fotoğrafı (Büyütüldü) -->
             <img src="sanem.jpeg" alt="Sanem Sözen" class="profile-avatar">
             <h1>SANEM SÖZEN</h1>
             <div class="subtitle">Seramik Sanatçısı</div>
@@ -837,10 +865,10 @@
                 <p>Üretim sürecinde geleneksel seramik teknikleri ile çağdaş sanat yaklaşımlarını bir araya getirerek bireysel ve toplumsal deneyimlere ilişkin araştırmalar yürütmektedir. Eğitimi süresince çeşitli sergi, etkinlik ve çalıştaylarda yer almış; farklı platformlarda eserlerini sanatseverlerle buluşturmuştur.</p>
             </div>
 
-            <!-- INSTAGRAM BANNER (sanem2.jpeg ile) -->
+            <!-- INSTAGRAM BANNER (sanem2.jpg ile güncellendi) -->
             <div class="insta-banner">
                 <div class="insta-info">
-                    <img src="sanem2.jpeg" alt="Sanem Ceramic" class="insta-img">
+                    <img src="sanem2.jpg" alt="Sanem Ceramic" class="insta-img">
                     <div class="insta-text">
                         <h3>Sanatçıyı Takip Edin</h3>
                         <p>Güncel seramik çalışmalarını ve atölye süreçlerini Instagram'da keşfedin.</p>
@@ -852,9 +880,14 @@
 
     </div>
 
-    <!-- FOOTER -->
+    <!-- RESMİ VE ŞIK FOOTER -->
     <footer>
-        <p>&copy; 2026 Sanem Sözen — Tüm Hakları Saklıdır.</p>
+        <div class="footer-title">SANEM SÖZEN — SERAMİK PORTFOLYO</div>
+        <p>Hacettepe Üniversitesi Güzel Sanatlar Enstitüsü | Seramik ve Cam Anasanat Dalı</p>
+        <div class="copyright">
+            © 2026 Sanem Sözen. Tüm hakları saklıdır.<br>
+            Sitede yer alan tüm görsel içerik ve özgün eser tasarımları sanatçıya aittir; izinsiz kopyalanamaz ve kullanılamaz.
+        </div>
     </footer>
 
     <!-- INTERACTIVE SCRIPTS -->
