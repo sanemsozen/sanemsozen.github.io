@@ -239,6 +239,51 @@
             box-shadow: 0 15px 35px rgba(27, 73, 101, 0.15);
         }
 
+        /* DAHA FAZLASI ARŞİV KARTI */
+        .archive-card {
+            background: linear-gradient(135deg, #1b4965 0%, #0b2545 100%);
+            border-radius: 16px;
+            padding: 35px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--soft-blue);
+            grid-column: span 1;
+        }
+
+        .archive-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--soft-blue);
+        }
+
+        .archive-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .archive-btn {
+            background-color: var(--soft-blue);
+            color: #0b2545;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .archive-btn:hover {
+            background-color: white;
+            transform: translateY(-2px);
+        }
+
         .image-container {
             width: 100%;
             height: 340px;
@@ -774,6 +819,13 @@
                 </div>
             </div>
 
+            <!-- DAHA FAZLA ESER / ARŞİV KARTI -->
+            <div class="archive-card" data-category="all">
+                <h3>Daha Fazla Eser & Arşiv</h3>
+                <p>Seçkide yer alanların yanı sıra, atölye süreçleri ve diğer tüm özgün seramik eserleri keşfetmek için arşivi inceleyin.</p>
+                <a href="https://www.instagram.com/san.ceramic_?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==" target="_blank" class="archive-btn">Instagram'da Keşfet</a>
+            </div>
+
         </div>
 
         <!-- HAKKINDA BÖLÜMÜ -->
@@ -809,14 +861,14 @@
     <script>
         // Kategori Filtreleme
         function filterCategory(category) {
-            const cards = document.querySelectorAll('.art-card');
+            const cards = document.querySelectorAll('.art-card, .archive-card');
             const buttons = document.querySelectorAll('.nav-btn');
 
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
             cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
+                if (category === 'all' || card.getAttribute('data-category') === category || card.classList.contains('archive-card')) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
