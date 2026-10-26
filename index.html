@@ -39,7 +39,7 @@
         header {
             background: linear-gradient(135deg, #0b2545 0%, #1b4965 100%);
             color: white;
-            padding: 80px 20px 60px;
+            padding: 60px 20px 50px;
             text-align: center;
             position: relative;
         }
@@ -47,13 +47,26 @@
         .header-content {
             max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--soft-blue);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
 
@@ -62,7 +75,7 @@
             color: var(--soft-blue);
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
@@ -137,13 +150,70 @@
             border-radius: 16px;
             box-shadow: var(--shadow);
             border-left: 5px solid var(--accent-blue);
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .about-card p {
             margin-bottom: 15px;
             font-size: 1.05rem;
             color: var(--text-main);
+        }
+
+        /* INSTAGRAM BANNER */
+        .insta-banner {
+            background: linear-gradient(135deg, #1b4965 0%, #62b6cb 100%);
+            border-radius: 16px;
+            padding: 35px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .insta-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .insta-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .insta-text h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .insta-text p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .insta-btn {
+            background-color: white;
+            color: var(--accent-blue);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .insta-btn:hover {
+            background-color: var(--text-main);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* GALLERY GRID */
@@ -184,7 +254,7 @@
         .art-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Kırpılmayı önler, eserin tamamını gösterir */
+            object-fit: contain;
             transition: transform 0.5s ease;
         }
 
@@ -274,6 +344,8 @@
             h1 { font-size: 2.2rem; }
             .gallery-grid { grid-template-columns: 1fr; }
             .about-card { padding: 25px; }
+            .insta-banner { flex-direction: column; text-align: center; }
+            .insta-info { flex-direction: column; }
         }
     </style>
 </head>
@@ -282,6 +354,8 @@
     <!-- HEADER -->
     <header>
         <div class="header-content">
+            <!-- Sanem'in Profil Fotoğrafı -->
+            <img src="sanem.jpeg" alt="Sanem Sözen" class="profile-avatar">
             <h1>SANEM SÖZEN</h1>
             <div class="subtitle">Seramik Sanatçısı</div>
         </div>
@@ -709,6 +783,18 @@
                 <p><strong>Sanem Sözen</strong>, 2003 yılında Ankara'da doğmuştur. Sanat eğitimine Ankara Güzel Sanatlar Lisesi'nde başlamış, burada edindiği temel sanat eğitiminin ardından Hacettepe Üniversitesi Güzel Sanatlar Fakültesi Seramik ve Cam Bölümü'nü kazanmıştır. 2026 yılında lisans eğitimini dereceyle tamamlayan Sözen, akademik ve sanatsal yolculuğuna yine <strong>Hacettepe Üniversitesi'nde Yüksek Lisans</strong> eğitimi ile devam etmektedir.</p>
                 <p>Çalışmalarında seramiğin hem biçimsel hem de kavramsal, malzemenin dönüştürücü potansiyeline odaklanmaktadır. Bu süreç içerisindeki araştırmalarını kendi çalışmalarına yansıtmayı amaçlayan sanatçı; insan psikolojisi, kırılganlık ve belirsizlik gibi temaları merkezine alır.</p>
                 <p>Üretim sürecinde geleneksel seramik teknikleri ile çağdaş sanat yaklaşımlarını bir araya getirerek bireysel ve toplumsal deneyimlere ilişkin araştırmalar yürütmektedir. Eğitimi süresince çeşitli sergi, etkinlik ve çalıştaylarda yer almış; farklı platformlarda eserlerini sanatseverlerle buluşturmuştur.</p>
+            </div>
+
+            <!-- INSTAGRAM BANNER (sanem2.jpeg ile) -->
+            <div class="insta-banner">
+                <div class="insta-info">
+                    <img src="sanem2.jpeg" alt="Sanem Ceramic" class="insta-img">
+                    <div class="insta-text">
+                        <h3>Sanatçıyı Takip Edin</h3>
+                        <p>Güncel seramik çalışmalarını ve atölye süreçlerini Instagram'da keşfedin.</p>
+                    </div>
+                </div>
+                <a href="https://www.instagram.com/san.ceramic_?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==" target="_blank" class="insta-btn">Instagram'a Git</a>
             </div>
         </div>
 
