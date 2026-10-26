@@ -171,16 +171,20 @@
 
         .image-container {
             width: 100%;
-            height: 320px;
+            height: 340px;
             overflow: hidden;
-            background-color: var(--light-blue);
+            background-color: #f0f4f8;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
         }
 
         .art-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Kırpılmayı önler, eserin tamamını gösterir */
             transition: transform 0.5s ease;
         }
 
