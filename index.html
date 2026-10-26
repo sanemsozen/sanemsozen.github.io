@@ -3,107 +3,752 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanem Sözen | Portfolyo</title>
+    <title>Sanem Sözen | Seramik Sanatçısı & Portfolyo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+            --text-main: #1a233a;
+            --text-muted: #5c6b89;
+            --accent-blue: #1b4965;
+            --soft-blue: #62b6cb;
+            --light-blue: #e8f1f5;
+            --border-color: #d8e2dc;
+            --shadow: 0 10px 30px rgba(27, 73, 101, 0.08);
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
+
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* HEADER & HERO */
+        header {
+            background: linear-gradient(135deg, #0b2545 0%, #1b4965 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--soft-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* NAV FILTERS */
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            flex-wrap: wrap;
+            padding: 10px;
         }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 12px 22px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            margin: 4px;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            color: white;
+            background-color: var(--accent-blue);
+        }
+
+        /* CONTAINER */
         .container {
-            background-color: #1e293b;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--soft-blue);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ABOUT SECTION */
+        .about-card {
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            border: 1px solid #334155;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-blue);
+            margin-bottom: 60px;
         }
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: #ec4899;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            color: white;
-            border: 4px solid #475569;
+
+        .about-card p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--text-main);
         }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
+
+        /* GALLERY GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
         }
-        .title {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        p {
-            color: #cbd5e1;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .links {
+
+        .art-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            border: 1px solid var(--light-blue);
         }
-        .btn {
-            background-color: #ec4899;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
+
+        .art-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(27, 73, 101, 0.15);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background-color: var(--light-blue);
+            position: relative;
+        }
+
+        .art-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .art-card:hover .art-image {
+            transform: scale(1.05);
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 8px;
+            padding: 10px 15px;
+            background: #f1f5f9;
+            overflow-x: auto;
+        }
+
+        .thumb {
+            width: 45px;
+            height: 45px;
+            border-radius: 6px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s, border 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .thumb:hover, .thumb.active-thumb {
+            opacity: 1;
+            border-color: var(--accent-blue);
+        }
+
+        .art-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .art-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .art-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .art-meta strong {
+            color: var(--text-main);
+            margin-right: 6px;
+        }
+
+        .category-badge {
+            align-self: flex-start;
+            background-color: var(--light-blue);
+            color: var(--accent-blue);
+            font-size: 0.8rem;
             font-weight: 600;
-            transition: background 0.2s;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: auto;
+            margin-top: 15px;
         }
-        .btn:hover {
-            background-color: #db2777;
+
+        /* FOOTER */
+        footer {
+            background-color: #0b2545;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
         }
-        .btn-secondary {
-            background-color: #334155;
+
+        footer p {
+            font-size: 0.95rem;
+            color: var(--soft-blue);
         }
-        .btn-secondary:hover {
-            background-color: #475569;
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .about-card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Baş Harfler -->
-        <div class="avatar">SS</div>
-        
-        <h1>Sanem Sözen</h1>
-        <div class="title">Portfolyo & Projeler</div>
-        
-        <p>
-            Selam! Burası Sanem Sözen'in kişisel web alanı. Yaptığım işler, projeler ve hakkımdaki detaylar burada yer alıyor.
-        </p>
-
-        <div class="links">
-            <a href="mailto:sanem@example.com" class="btn">İletişime Geç</a>
-            <a href="https://instagram.com" target="_blank" class="btn btn-secondary">Instagram / Sosyal Medya</a>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <h1>SANEM SÖZEN</h1>
+            <div class="subtitle">Seramik Sanatçısı</div>
         </div>
+    </header>
+
+    <!-- NAVIGATION / FILTERS -->
+    <nav>
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="filterCategory('all')">Tüm Eserler</button>
+            <button class="nav-btn" onclick="filterCategory('elle')">Elle Şekillendirme</button>
+            <button class="nav-btn" onclick="filterCategory('dekor')">Dekor Çalışmaları</button>
+            <button class="nav-btn" onclick="filterCategory('kalip')">Kalıp Çalışmaları</button>
+            <button class="nav-btn" onclick="filterCategory('karisik')">Karışık Malzeme</button>
+            <button class="nav-btn" onclick="filterCategory('bitirme')">Bitirme Projesi</button>
+            <button class="nav-btn" onclick="scrollToAbout()">Hakkında</button>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- ESERLER GALERİSİ -->
+        <h2 class="section-title">Portfolyo</h2>
+        <div class="gallery-grid" id="gallery">
+
+            <!-- ELLE ŞEKİLLENDİRME -->
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-el" src="eser1.jpg" alt="EL MODELAJ" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser1.jpg" class="thumb active-thumb" onclick="changeImage('img-el', 'eser1.jpg', this)">
+                    <img src="eser1.2.jpg" class="thumb" onclick="changeImage('img-el', 'eser1.2.jpg', this)">
+                    <img src="eser1.3.jpg" class="thumb" onclick="changeImage('img-el', 'eser1.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“EL” MODELAJ</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 19 x 10 x 20 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Kırmızı Kil, Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2022</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-bot" src="eser2.jpg" alt="BOT MODELAJ" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser2.jpg" class="thumb active-thumb" onclick="changeImage('img-bot', 'eser2.jpg', this)">
+                    <img src="eser2.2.jpg" class="thumb" onclick="changeImage('img-bot', 'eser2.2.jpg', this)">
+                    <img src="eser2.3.jpg" class="thumb" onclick="changeImage('img-bot', 'eser2.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“BOT” MODELAJ</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 9 x 12 x 23 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Kırmızı Kil, Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2022</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-kus" src="eser3.jpg" alt="KUŞ EVİ" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser3.jpg" class="thumb active-thumb" onclick="changeImage('img-kus', 'eser3.jpg', this)">
+                    <img src="eser3.2.jpg" class="thumb" onclick="changeImage('img-kus', 'eser3.2.jpg', this)">
+                    <img src="eser3.3.jpg" class="thumb" onclick="changeImage('img-kus', 'eser3.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“KUŞ EVİ”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 21 x 19 x 33 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2022</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-tirmanma" src="eser4.jpg" alt="TIRMANMA DERİNLİKTE PARLAYAN ZITLIKTIR" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser4.jpg" class="thumb active-thumb" onclick="changeImage('img-tirmanma', 'eser4.jpg', this)">
+                    <img src="eser4.2.jpg" class="thumb" onclick="changeImage('img-tirmanma', 'eser4.2.jpg', this)">
+                    <img src="eser4.3.jpg" class="thumb" onclick="changeImage('img-tirmanma', 'eser4.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“TIRMANMA DERİNLİKTE PARLAYAN ZITLIKTIR”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 14 x 37 x 14 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2023</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-belirsiz" src="eser5.jpg" alt="BELİRSİZ" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser5.jpg" class="thumb active-thumb" onclick="changeImage('img-belirsiz', 'eser5.jpg', this)">
+                    <img src="eser5.2.jpg" class="thumb" onclick="changeImage('img-belirsiz', 'eser5.2.jpg', this)">
+                    <img src="eser5.3.jpg" class="thumb" onclick="changeImage('img-belirsiz', 'eser5.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“BELİRSİZ”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 39 x 36 x 29 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2024</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-muphem" src="eser6.jpg" alt="MÜPHEM" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser6.jpg" class="thumb active-thumb" onclick="changeImage('img-muphem', 'eser6.jpg', this)">
+                    <img src="eser6.2.jpg" class="thumb" onclick="changeImage('img-muphem', 'eser6.2.jpg', this)">
+                    <img src="eser6.3.jpg" class="thumb" onclick="changeImage('img-muphem', 'eser6.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“MÜPHEM”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 39 x 27 x 31 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2024</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-sefkat" src="eser7.jpg" alt="ŞEFKAT" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser7.jpg" class="thumb active-thumb" onclick="changeImage('img-sefkat', 'eser7.jpg', this)">
+                    <img src="eser7.2.jpg" class="thumb" onclick="changeImage('img-sefkat', 'eser7.2.jpg', this)">
+                    <img src="eser7.3.jpg" class="thumb" onclick="changeImage('img-sefkat', 'eser7.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“ŞEFKAT”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 32 x 40 x 43 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="elle">
+                <div class="image-container">
+                    <img id="img-yangin" src="eser8.jpg" alt="YANGIN" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="eser8.jpg" class="thumb active-thumb" onclick="changeImage('img-yangin', 'eser8.jpg', this)">
+                    <img src="eser8.2.jpg" class="thumb" onclick="changeImage('img-yangin', 'eser8.2.jpg', this)">
+                    <img src="eser8.3.jpg" class="thumb" onclick="changeImage('img-yangin', 'eser8.3.jpg', this)">
+                    <img src="eser8.4.jpg" class="thumb" onclick="changeImage('img-yangin', 'eser8.4.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“YANGIN”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 23 x 29 x 16 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Elle Şekillendirme</span>
+                </div>
+            </div>
+
+            <!-- DEKOR ÇALIŞMALARI -->
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-balik" src="dekor1.jpg" alt="BALIKLARIN MUCİZEVİ BİR ŞEKİLDE TUTULMASI" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="dekor1.jpg" class="thumb active-thumb" onclick="changeImage('img-balik', 'dekor1.jpg', this)">
+                    <img src="dekor2.jpg" class="thumb" onclick="changeImage('img-balik', 'dekor2.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“BALIKLARIN MUCİZEVİ BİR ŞEKİLDE TUTULMASI”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 35 x 50 x 4 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Plaka Tekniği, Renkli Astar, Röprodüksiyon</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-kase1" src="kase1.jpg" alt="YENGEÇ DESENLİ KASE 1" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="kase1.jpg" class="thumb active-thumb" onclick="changeImage('img-kase1', 'kase1.jpg', this)">
+                    <img src="kase1.2.jpg" class="thumb" onclick="changeImage('img-kase1', 'kase1.2.jpg', this)">
+                    <img src="kase1.3.jpg" class="thumb" onclick="changeImage('img-kase1', 'kase1.3.jpg', this)">
+                    <img src="kase1.4.jpg" class="thumb" onclick="changeImage('img-kase1', 'kase1.4.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“YENGEÇ DESENLİ KASE 1”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 13 x 7 x 13 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Torna, Kabartma</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-kase2" src="kase2.jpg" alt="YENGEÇ DESENLİ KASE 2" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="kase2.jpg" class="thumb active-thumb" onclick="changeImage('img-kase2', 'kase2.jpg', this)">
+                    <img src="kase2.2.jpg" class="thumb" onclick="changeImage('img-kase2', 'kase2.2.jpg', this)">
+                    <img src="kase2.3.jpg" class="thumb" onclick="changeImage('img-kase2', 'kase2.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“YENGEÇ DESENLİ KASE 2”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 16 x 9 x 16 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme, Döküm, Ajur Tekniği</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-kase3" src="kase3.jpg" alt="YENGEÇ DESENLİ KASE 3" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="kase3.jpg" class="thumb active-thumb" onclick="changeImage('img-kase3', 'kase3.jpg', this)">
+                    <img src="kase3.2.jpg" class="thumb" onclick="changeImage('img-kase3', 'kase3.2.jpg', this)">
+                    <img src="kase3.3.jpg" class="thumb" onclick="changeImage('img-kase3', 'kase3.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“YENGEÇ DESENLİ KASE 3”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 14 x 6 x 14 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Torna, Sigrafitto Tekniği</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-bardak" src="bardak1.jpg" alt="BARDAK" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="bardak1.jpg" class="thumb active-thumb" onclick="changeImage('img-bardak', 'bardak1.jpg', this)">
+                    <img src="bardak1.2.jpg" class="thumb" onclick="changeImage('img-bardak', 'bardak1.2.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“BARDAK”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 8 x 10 x 8 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Torna, Akıtma Tekniği</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-vazo" src="vazo1.jpg" alt="VAZO" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="vazo1.jpg" class="thumb active-thumb" onclick="changeImage('img-vazo', 'vazo1.jpg', this)">
+                    <img src="vazo1.2.jpg" class="thumb" onclick="changeImage('img-vazo', 'vazo1.2.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“VAZO”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 16 x 27 x 16 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Torna, Akıtma Tekniği</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-birim" src="birim1.jpg" alt="BİRİM ÇALIŞMASI" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="birim1.jpg" class="thumb active-thumb" onclick="changeImage('img-birim', 'birim1.jpg', this)">
+                    <img src="birim1.2.jpg" class="thumb" onclick="changeImage('img-birim', 'birim1.2.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“BİRİM ÇALIŞMASI”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 20 x 3 x 20 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme, Raku</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="dekor">
+                <div class="image-container">
+                    <img id="img-birimkup" src="birimkare.jpg" alt="BİRİM ÇALIŞMASI KÜP" class="art-image">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“BİRİM ÇALIŞMASI KÜP”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 20 x 20 x 20 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme, Raku</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Dekor Çalışması</span>
+                </div>
+            </div>
+
+            <!-- KALIP ÇALIŞMALARI -->
+            <div class="art-card" data-category="kalip">
+                <div class="image-container">
+                    <img id="img-kalemlik" src="kalemlik1.jpg" alt="KALEMLİK" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="kalemlik1.jpg" class="thumb active-thumb" onclick="changeImage('img-kalemlik', 'kalemlik1.jpg', this)">
+                    <img src="kalemlik1.2.jpg" class="thumb" onclick="changeImage('img-kalemlik', 'kalemlik1.2.jpg', this)">
+                    <img src="kalemlik1.3.jpg" class="thumb" onclick="changeImage('img-kalemlik', 'kalemlik1.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“KALEMLİK”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 10 x 9 x 10 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Döküm</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2024-2025</div>
+                    <span class="category-badge">Kalıp Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="kalip">
+                <div class="image-container">
+                    <img id="img-taki" src="takı1.jpg" alt="TAKI KUTUSU" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="takı1.jpg" class="thumb active-thumb" onclick="changeImage('img-taki', 'takı1.jpg', this)">
+                    <img src="takı1.2.jpg" class="thumb" onclick="changeImage('img-taki', 'takı1.2.jpg', this)">
+                    <img src="takı1.3.jpg" class="thumb" onclick="changeImage('img-taki', 'takı1.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“TAKI KUTUSU”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 13 x 17 x 13 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Döküm</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2026</div>
+                    <span class="category-badge">Kalıp Çalışması</span>
+                </div>
+            </div>
+
+            <!-- KARIŞIK MALZEME -->
+            <div class="art-card" data-category="karisik">
+                <div class="image-container">
+                    <img id="img-melek" src="melek1.jpg" alt="MELEK" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="melek1.jpg" class="thumb active-thumb" onclick="changeImage('img-melek', 'melek1.jpg', this)">
+                    <img src="melek1.2.jpg" class="thumb" onclick="changeImage('img-melek', 'melek1.2.jpg', this)">
+                    <img src="melek1.3.jpg" class="thumb" onclick="changeImage('img-melek', 'melek1.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“MELEK”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 46 x 25 x 7 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Seramik Figür Elle Şekillendirme, Cam Kanat</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2025</div>
+                    <span class="category-badge">Karışık Malzeme</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="karisik">
+                <div class="image-container">
+                    <img id="img-varyok" src="varyok1.jpg" alt="VAROLMAYAN" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="varyok1.jpg" class="thumb active-thumb" onclick="changeImage('img-varyok', 'varyok1.jpg', this)">
+                    <img src="varyok1.2.jpg" class="thumb" onclick="changeImage('img-varyok', 'varyok1.2.jpg', this)">
+                    <img src="varyok1.3.jpg" class="thumb" onclick="changeImage('img-varyok', 'varyok1.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“VAROLMAYAN”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 32 x 39 x 22 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme, Karışık Malzeme (Cam, Seramik)</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2026</div>
+                    <span class="category-badge">Karışık Malzeme</span>
+                </div>
+            </div>
+
+            <!-- BİTİRME PROJESİ -->
+            <div class="art-card" data-category="bitirme">
+                <div class="image-container">
+                    <img id="img-varolusa" src="var1.jpg" alt="VAROLUŞ" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="var1.jpg" class="thumb active-thumb" onclick="changeImage('img-varolusa', 'var1.jpg', this)">
+                    <img src="var1.2.jpg" class="thumb" onclick="changeImage('img-varolusa', 'var1.2.jpg', this)">
+                    <img src="var1.3.jpg" class="thumb" onclick="changeImage('img-varolusa', 'var1.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“VAROLUŞ”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 63 x 70 x 20 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2026</div>
+                    <span class="category-badge">Lisans Bitirme Projesi</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-category="bitirme">
+                <div class="image-container">
+                    <img id="img-caba" src="caba1.jpg" alt="ÇABA" class="art-image">
+                </div>
+                <div class="thumbnails">
+                    <img src="caba1.jpg" class="thumb active-thumb" onclick="changeImage('img-caba', 'caba1.jpg', this)">
+                    <img src="caba1.2.jpg" class="thumb" onclick="changeImage('img-caba', 'caba1.2.jpg', this)">
+                    <img src="caba1.3.jpg" class="thumb" onclick="changeImage('img-caba', 'caba1.3.jpg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“ÇABA”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 25 x 111 x 36 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Elle Şekillendirme</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2026</div>
+                    <span class="category-badge">Lisans Bitirme Projesi</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- HAKKINDA BÖLÜMÜ -->
+        <div style="margin-top: 100px;" id="about">
+            <h2 class="section-title">Hakkında</h2>
+            <div class="about-card">
+                <p><strong>Sanem Sözen</strong>, 2003 yılında Ankara'da doğmuştur. Sanat eğitimine Ankara Güzel Sanatlar Lisesi'nde başlamış, burada edindiği temel sanat eğitiminin ardından Hacettepe Üniversitesi Güzel Sanatlar Fakültesi Seramik ve Cam Bölümü'nü kazanmıştır. 2026 yılında lisans eğitimini dereceyle tamamlayan Sözen, akademik ve sanatsal yolculuğuna yine <strong>Hacettepe Üniversitesi'nde Yüksek Lisans</strong> eğitimi ile devam etmektedir.</p>
+                <p>Çalışmalarında seramiğin hem biçimsel hem de kavramsal, malzemenin dönüştürücü potansiyeline odaklanmaktadır. Bu süreç içerisindeki araştırmalarını kendi çalışmalarına yansıtmayı amaçlayan sanatçı; insan psikolojisi, kırılganlık ve belirsizlik gibi temaları merkezine alır.</p>
+                <p>Üretim sürecinde geleneksel seramik teknikleri ile çağdaş sanat yaklaşımlarını bir araya getirerek bireysel ve toplumsal deneyimlere ilişkin araştırmalar yürütmektedir. Eğitimi süresince çeşitli sergi, etkinlik ve çalıştaylarda yer almış; farklı platformlarda eserlerini sanatseverlerle buluşturmuştur.</p>
+            </div>
+        </div>
+
     </div>
 
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Sanem Sözen — Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // Kategori Filtreleme
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.art-card');
+            const buttons = document.querySelectorAll('.nav-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Küçük resme tıklayınca büyük resmi değiştirme
+        function changeImage(mainImgId, newSrc, thumbElement) {
+            document.getElementById(mainImgId).src = newSrc;
+            
+            // Thumbnail active stili
+            const parent = thumbElement.parentElement;
+            const thumbs = parent.querySelectorAll('.thumb');
+            thumbs.forEach(t => t.classList.remove('active-thumb'));
+            thumbElement.classList.add('active-thumb');
+        }
+
+        // Hakkında bölümüne yumuşak kaydırma
+        function scrollToAbout() {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
