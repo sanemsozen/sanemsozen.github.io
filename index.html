@@ -37,14 +37,34 @@
 
         /* HEADER & HERO BANNER */
         header {
-            background: linear-gradient(135deg, #0b2545 0%, #1b4965 100%), url('banner.jpeg');
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            background-color: #0b2545;
             color: white;
             padding: 90px 20px 80px;
             text-align: center;
-            position: relative;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(11, 37, 69, 0.2);
+        }
+
+        .header-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(11, 37, 69, 0.65) 0%, rgba(27, 73, 101, 0.65) 100%);
+            z-index: 2;
         }
 
         .header-content {
@@ -54,7 +74,7 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
 
         .profile-avatar {
@@ -62,8 +82,8 @@
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            border: 5px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
             margin-bottom: 25px;
             transition: transform 0.3s ease;
         }
@@ -78,7 +98,7 @@
             letter-spacing: 2px;
             margin-bottom: 8px;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .subtitle {
@@ -88,7 +108,7 @@
             letter-spacing: 4px;
             margin-bottom: 0;
             font-weight: 600;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
         /* NAV FILTERS */
@@ -239,6 +259,12 @@
             margin-top: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             display: block;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .exhibition-img-preview:hover {
+            transform: scale(1.02);
         }
 
         /* INSTAGRAM BANNER */
@@ -384,6 +410,7 @@
             height: 100%;
             object-fit: contain;
             transition: transform 0.5s ease;
+            cursor: pointer;
         }
 
         .art-card:hover .art-image {
@@ -454,6 +481,50 @@
             margin-top: 15px;
         }
 
+        /* LIGHTBOX MODAL (TAM EKRAN GÖRSEL GÖRÜNTÜLEME) */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 37, 69, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--soft-blue);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         /* FOOTER */
         footer {
             background-color: #0b2545;
@@ -503,8 +574,13 @@
 
     <!-- HEADER & HERO BANNER -->
     <header>
+        <!-- Arka Plan Görseli ve Karartma Katmanı -->
+        <img src="banner.jpeg" alt="Banner Arka Plan" class="header-bg-img">
+        <div class="header-overlay"></div>
+
+        <!-- Ön Yüz İçeriği -->
         <div class="header-content">
-            <img src="sanem.jpeg" alt="Sanem Sözen" class="profile-avatar">
+            <img src="sanemmert.jpeg" alt="Sanem Sözen" class="profile-avatar">
             <h1>SANEM SÖZEN</h1>
             <div class="subtitle">Seramik Sanatçısı</div>
         </div>
@@ -533,7 +609,7 @@
             <!-- ELLE ŞEKİLLENDİRME -->
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-el" src="eser1.jpeg" alt="EL MODELAJ" class="art-image">
+                    <img id="img-el" src="eser1.jpeg" alt="EL MODELAJ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser1.jpeg" class="thumb active-thumb" onclick="changeImage('img-el', 'eser1.jpeg', this)">
@@ -551,7 +627,7 @@
 
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-bot" src="eser2.jpeg" alt="BOT MODELAJ" class="art-image">
+                    <img id="img-bot" src="eser2.jpeg" alt="BOT MODELAJ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser2.jpeg" class="thumb active-thumb" onclick="changeImage('img-bot', 'eser2.jpeg', this)">
@@ -569,7 +645,7 @@
 
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-kus" src="eser3.jpeg" alt="KUŞ EVİ" class="art-image">
+                    <img id="img-kus" src="eser3.jpeg" alt="KUŞ EVİ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser3.jpeg" class="thumb active-thumb" onclick="changeImage('img-kus', 'eser3.jpeg', this)">
@@ -587,7 +663,7 @@
 
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-tirmanma" src="eser4.jpeg" alt="TIRMANMA DERİNLİKTE PARLAYAN ZITLIKTIR" class="art-image">
+                    <img id="img-tirmanma" src="eser4.jpeg" alt="TIRMANMA DERİNLİKTE PARLAYAN ZITLIKTIR" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser4.jpeg" class="thumb active-thumb" onclick="changeImage('img-tirmanma', 'eser4.jpeg', this)">
@@ -605,7 +681,7 @@
 
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-belirsiz" src="eser5.jpeg" alt="BELİRSİZ" class="art-image">
+                    <img id="img-belirsiz" src="eser5.jpeg" alt="BELİRSİZ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser5.jpeg" class="thumb active-thumb" onclick="changeImage('img-belirsiz', 'eser5.jpeg', this)">
@@ -623,7 +699,7 @@
 
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-muphem" src="eser6.jpeg" alt="MÜPHEM" class="art-image">
+                    <img id="img-muphem" src="eser6.jpeg" alt="MÜPHEM" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser6.jpeg" class="thumb active-thumb" onclick="changeImage('img-muphem', 'eser6.jpeg', this)">
@@ -641,7 +717,7 @@
 
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-sefkat" src="eser7.jpeg" alt="ŞEFKAT" class="art-image">
+                    <img id="img-sefkat" src="eser7.jpeg" alt="ŞEFKAT" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser7.jpeg" class="thumb active-thumb" onclick="changeImage('img-sefkat', 'eser7.jpeg', this)">
@@ -659,7 +735,7 @@
 
             <div class="art-card" data-category="elle">
                 <div class="image-container">
-                    <img id="img-yangin" src="eser8.jpeg" alt="YANGIN" class="art-image">
+                    <img id="img-yangin" src="eser8.jpeg" alt="YANGIN" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="eser8.jpeg" class="thumb active-thumb" onclick="changeImage('img-yangin', 'eser8.jpeg', this)">
@@ -679,7 +755,7 @@
             <!-- DEKOR ÇALIŞMALARI -->
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-balik" src="dekor1.jpeg" alt="BALIKLARIN MUCİZEVİ BİR ŞEKİLDE TUTULMASI" class="art-image">
+                    <img id="img-balik" src="dekor1.jpeg" alt="BALIKLARIN MUCİZEVİ BİR ŞEKİLDE TUTULMASI" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="dekor1.jpeg" class="thumb active-thumb" onclick="changeImage('img-balik', 'dekor1.jpeg', this)">
@@ -696,7 +772,7 @@
 
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-kase1" src="kase1.jpeg" alt="YENGEÇ DESENLİ KASE 1" class="art-image">
+                    <img id="img-kase1" src="kase1.jpeg" alt="YENGEÇ DESENLİ KASE 1" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="kase1.jpeg" class="thumb active-thumb" onclick="changeImage('img-kase1', 'kase1.jpeg', this)">
@@ -715,7 +791,7 @@
 
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-kase2" src="kase2.jpeg" alt="YENGEÇ DESENLİ KASE 2" class="art-image">
+                    <img id="img-kase2" src="kase2.jpeg" alt="YENGEÇ DESENLİ KASE 2" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="kase2.jpeg" class="thumb active-thumb" onclick="changeImage('img-kase2', 'kase2.jpeg', this)">
@@ -733,7 +809,7 @@
 
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-kase3" src="kase3.jpeg" alt="YENGEÇ DESENLİ KASE 3" class="art-image">
+                    <img id="img-kase3" src="kase3.jpeg" alt="YENGEÇ DESENLİ KASE 3" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="kase3.jpeg" class="thumb active-thumb" onclick="changeImage('img-kase3', 'kase3.jpeg', this)">
@@ -751,7 +827,7 @@
 
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-bardak" src="bardak1.jpeg" alt="BARDAK" class="art-image">
+                    <img id="img-bardak" src="bardak1.jpeg" alt="BARDAK" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="bardak1.jpeg" class="thumb active-thumb" onclick="changeImage('img-bardak', 'bardak1.jpeg', this)">
@@ -768,7 +844,7 @@
 
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-vazo" src="vazo1.jpeg" alt="VAZO" class="art-image">
+                    <img id="img-vazo" src="vazo1.jpeg" alt="VAZO" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="vazo1.jpeg" class="thumb active-thumb" onclick="changeImage('img-vazo', 'vazo1.jpeg', this)">
@@ -785,7 +861,7 @@
 
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-birim" src="birim1.jpeg" alt="BİRİM ÇALIŞMASI" class="art-image">
+                    <img id="img-birim" src="birim1.jpeg" alt="BİRİM ÇALIŞMASI" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="birim1.jpeg" class="thumb active-thumb" onclick="changeImage('img-birim', 'birim1.jpeg', this)">
@@ -802,7 +878,7 @@
 
             <div class="art-card" data-category="dekor">
                 <div class="image-container">
-                    <img id="img-birimkup" src="birimkare.jpeg" alt="BİRİM ÇALIŞMASI KÜP" class="art-image">
+                    <img id="img-birimkup" src="birimkare.jpeg" alt="BİRİM ÇALIŞMASI KÜP" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="art-info">
                     <div class="art-title">“BİRİM ÇALIŞMASI KÜP”</div>
@@ -816,7 +892,7 @@
             <!-- KALIP ÇALIŞMALARI -->
             <div class="art-card" data-category="kalip">
                 <div class="image-container">
-                    <img id="img-kalemlik" src="kalemlik1.jpeg" alt="KALEMLİK" class="art-image">
+                    <img id="img-kalemlik" src="kalemlik1.jpeg" alt="KALEMLİK" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="kalemlik1.jpeg" class="thumb active-thumb" onclick="changeImage('img-kalemlik', 'kalemlik1.jpeg', this)">
@@ -834,7 +910,7 @@
 
             <div class="art-card" data-category="kalip">
                 <div class="image-container">
-                    <img id="img-taki" src="takı1.jpeg" alt="TAKI KUTUSU" class="art-image">
+                    <img id="img-taki" src="takı1.jpeg" alt="TAKI KUTUSU" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="takı1.jpeg" class="thumb active-thumb" onclick="changeImage('img-taki', 'takı1.jpeg', this)">
@@ -853,7 +929,7 @@
             <!-- KARIŞIK MALZEME -->
             <div class="art-card" data-category="karisik">
                 <div class="image-container">
-                    <img id="img-melek" src="melek1.jpeg" alt="MELEK" class="art-image">
+                    <img id="img-melek" src="melek1.jpeg" alt="MELEK" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="melek1.jpeg" class="thumb active-thumb" onclick="changeImage('img-melek', 'melek1.jpeg', this)">
@@ -871,7 +947,7 @@
 
             <div class="art-card" data-category="karisik">
                 <div class="image-container">
-                    <img id="img-varyok" src="varyok1.jpeg" alt="VAROLMAYAN" class="art-image">
+                    <img id="img-varyok" src="varyok1.jpeg" alt="VAROLMAYAN" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="varyok1.jpeg" class="thumb active-thumb" onclick="changeImage('img-varyok', 'varyok1.jpeg', this)">
@@ -890,7 +966,7 @@
             <!-- BİTİRME PROJESİ -->
             <div class="art-card" data-category="bitirme">
                 <div class="image-container">
-                    <img id="img-varolusa" src="var1.jpeg" alt="VAROLUŞ" class="art-image">
+                    <img id="img-varolusa" src="var1.jpeg" alt="VAROLUŞ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="var1.jpeg" class="thumb active-thumb" onclick="changeImage('img-varolusa', 'var1.jpeg', this)">
@@ -908,7 +984,7 @@
 
             <div class="art-card" data-category="bitirme">
                 <div class="image-container">
-                    <img id="img-caba" src="caba1.jpeg" alt="ÇABA" class="art-image">
+                    <img id="img-caba" src="caba1.jpeg" alt="ÇABA" class="art-image" onclick="openLightbox(this.src)">
                 </div>
                 <div class="thumbnails">
                     <img src="caba1.jpeg" class="thumb active-thumb" onclick="changeImage('img-caba', 'caba1.jpeg', this)">
@@ -952,7 +1028,7 @@
                         <span class="exhibition-year">21-25 Ekim 2026</span>
                         <div class="exhibition-title">ARTNOUVA 3. Sanat Fuarı / Fresh Ankara V. Çağdaş Sanat Sergisi</div>
                         <div class="exhibition-location">ATO Congresium, Ankara.</div>
-                        <img src="fresh.jpeg" alt="Fresh Ankara Artnouva" class="exhibition-img-preview">
+                        <img src="fresh.jpeg" alt="Fresh Ankara Artnouva" class="exhibition-img-preview" onclick="openLightbox(this.src)">
                     </li>
                     <li class="exhibition-item">
                         <span class="exhibition-year">2026</span>
@@ -983,7 +1059,7 @@
                         <span class="exhibition-year">2025</span>
                         <div class="exhibition-title">Baş Belası Bir Sergi Biriktirmek</div>
                         <div class="exhibition-location">HartHurtArt, Ankara.</div>
-                        <img src="basbelasi.jpeg" alt="Baş Belası Sergi Afişi" class="exhibition-img-preview">
+                        <img src="basbelasi.jpeg" alt="Baş Belası Sergi Afişi" class="exhibition-img-preview" onclick="openLightbox(this.src)">
                     </li>
                     <li class="exhibition-item">
                         <span class="exhibition-year">2025</span>
@@ -1021,6 +1097,12 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- TAM EKRAN GÖRSEL MODALI (LIGHTBOX) -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
     </div>
 
     <!-- RESMİ FOOTER -->
@@ -1070,6 +1152,18 @@
 
         function scrollToExhibitions() {
             document.getElementById('exhibitions').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Lightbox Tam Ekran Görsel Açma / Kapatma
+        function openLightbox(src) {
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImg');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
         }
     </script>
 </body>
