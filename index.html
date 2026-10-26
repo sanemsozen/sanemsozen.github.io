@@ -223,13 +223,15 @@
 
         .exhibition-img-preview {
             width: 100%;
-            max-width: 250px;
-            height: 150px;
-            object-fit: cover;
+            max-width: 320px;
+            height: 220px;
+            object-fit: contain; /* Kırpılmayı önler, afişin tamamını gösterir */
+            background-color: #f8fafc;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             margin-top: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: block;
         }
 
         /* INSTAGRAM BANNER */
@@ -942,7 +944,7 @@
                     <li class="exhibition-item">
                         <span class="exhibition-year">21-25 Ekim 2026</span>
                         <div class="exhibition-title">ARTNOUVA 3. Sanat Fuarı / Fresh Ankara V. Çağdaş Sanat Sergisi</div>
-                        <div class="exhibition-location">ATO Congresium, Ankara. (Küratör: Kıymet Giray)[cite: 2]</div>
+                        <div class="exhibition-location">ATO Congresium, Ankara.</div>
                         <img src="fresh.jpeg" alt="Fresh Ankara Artnouva" class="exhibition-img-preview">
                     </li>
                     <li class="exhibition-item">
@@ -993,7 +995,7 @@
                     </li>
                     <li class="exhibition-item">
                         <span class="exhibition-year">2023</span>
-                        <div class="exhibition-title">Köy Enstitüleri 6. Geleneksel Anma Etkinliği</div>
+                        <div class="exhibition-location">Köy Enstitüleri 6. Geleneksel Anma Etkinliği</div>
                         <div class="exhibition-location">Zafer Çarşısı Sergi Salonu, Ankara.</div>
                     </li>
                 </ul>
