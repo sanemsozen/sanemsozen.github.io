@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanem Sözen | Seramik Sanatçısı & Portfolyo</title>
+    <title>Sanem Sözen | Seramik Sanatçısı</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -558,6 +558,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
 
         @media (max-width: 768px) {
@@ -574,11 +575,9 @@
 
     <!-- HEADER & HERO BANNER -->
     <header>
-        <!-- Arka Plan Görseli ve Karartma Katmanı -->
         <img src="banner.jpeg" alt="Banner Arka Plan" class="header-bg-img">
         <div class="header-overlay"></div>
 
-        <!-- Ön Yüz İçeriği -->
         <div class="header-content">
             <img src="sanemmert.jpeg" alt="Sanem Sözen" class="profile-avatar">
             <h1>SANEM SÖZEN</h1>
@@ -586,15 +585,13 @@
         </div>
     </header>
 
-    <!-- NAVIGATION / FILTERS -->
+    <!-- NAVIGATION / YILLARA GÖRE FİLTRELER -->
     <nav>
         <div class="nav-container">
-            <button class="nav-btn active" onclick="filterCategory('all')">Tüm Eserler</button>
-            <button class="nav-btn" onclick="filterCategory('elle')">Elle Şekillendirme</button>
-            <button class="nav-btn" onclick="filterCategory('dekor')">Dekor Çalışmaları</button>
-            <button class="nav-btn" onclick="filterCategory('kalip')">Kalıp Çalışmaları</button>
-            <button class="nav-btn" onclick="filterCategory('karisik')">Karışık Malzeme</button>
-            <button class="nav-btn" onclick="filterCategory('bitirme')">Bitirme Projesi</button>
+            <button class="nav-btn active" onclick="filterYear('all')">Tüm Eserler</button>
+            <button class="nav-btn" onclick="filterYear('22-23')">2022 - 2023</button>
+            <button class="nav-btn" onclick="filterYear('24-25')">2024 - 2025</button>
+            <button class="nav-btn" onclick="filterYear('2026')">2026</button>
             <button class="nav-btn" onclick="scrollToAbout()">Hakkında</button>
             <button class="nav-btn" onclick="scrollToExhibitions()">Sergi & Etkinlikler</button>
         </div>
@@ -603,11 +600,11 @@
     <div class="container">
 
         <!-- ESERLER GALERİSİ -->
-        <h2 class="section-title">Portfolyo</h2>
+        <h2 class="section-title">Eserler</h2>
         <div class="gallery-grid" id="gallery">
 
-            <!-- ELLE ŞEKİLLENDİRME -->
-            <div class="art-card" data-category="elle">
+            <!-- 2022-2023 ÇALIŞMALARI -->
+            <div class="art-card" data-year="22-23">
                 <div class="image-container">
                     <img id="img-el" src="eser1.jpeg" alt="EL MODELAJ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -625,7 +622,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="elle">
+            <div class="art-card" data-year="22-23">
                 <div class="image-container">
                     <img id="img-bot" src="eser2.jpeg" alt="BOT MODELAJ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -643,7 +640,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="elle">
+            <div class="art-card" data-year="22-23">
                 <div class="image-container">
                     <img id="img-kus" src="eser3.jpeg" alt="KUŞ EVİ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -661,7 +658,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="elle">
+            <div class="art-card" data-year="22-23">
                 <div class="image-container">
                     <img id="img-tirmanma" src="eser4.jpeg" alt="TIRMANMA DERİNLİKTE PARLAYAN ZITLIKTIR" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -679,7 +676,8 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="elle">
+            <!-- 2024-2025 ÇALIŞMALARI -->
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-belirsiz" src="eser5.jpeg" alt="BELİRSİZ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -697,7 +695,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="elle">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-muphem" src="eser6.jpeg" alt="MÜPHEM" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -715,7 +713,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="elle">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-sefkat" src="eser7.jpeg" alt="ŞEFKAT" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -723,7 +721,7 @@
                     <img src="eser7.jpeg" class="thumb active-thumb" onclick="changeImage('img-sefkat', 'eser7.jpeg', this)">
                     <img src="eser7.2.jpeg" class="thumb" onclick="changeImage('img-sefkat', 'eser7.2.jpeg', this)">
                     <img src="eser7.3.jpeg" class="thumb" onclick="changeImage('img-sefkat', 'eser7.3.jpeg', this)">
-                    <img src="guš.jpeg" class="thumb" onclick="changeImage('img-sefkat', 'guš.jpeg', this)">
+                    <img src="gus.jpeg" class="thumb" onclick="changeImage('img-sefkat', 'gus.jpeg', this)">
                 </div>
                 <div class="art-info">
                     <div class="art-title">“ŞEFKAT”</div>
@@ -734,7 +732,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="elle">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-yangin" src="eser8.jpeg" alt="YANGIN" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -753,8 +751,7 @@
                 </div>
             </div>
 
-            <!-- DEKOR ÇALIŞMALARI -->
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-essizkase" src="mükkase1.jpeg" alt="EŞSİZ KASE" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -771,7 +768,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-balik" src="dekor1.jpeg" alt="BALIKLARIN MUCİZEVİ BİR ŞEKİLDE TUTULMASI" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -788,7 +785,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-kase1" src="kase1.jpeg" alt="YENGEÇ DESENLİ KASE 1" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -807,7 +804,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-kase2" src="kase2.jpeg" alt="YENGEÇ DESENLİ KASE 2" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -825,7 +822,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-kase3" src="kase3.jpeg" alt="YENGEÇ DESENLİ KASE 3" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -843,7 +840,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-bardak" src="bardak1.jpeg" alt="BARDAK" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -860,7 +857,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-vazo" src="vazo1.jpeg" alt="VAZO" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -877,7 +874,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-birim" src="birim1.jpeg" alt="BİRİM ÇALIŞMASI" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -894,7 +891,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="dekor">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-birimkup" src="birimkare.jpeg" alt="BİRİM ÇALIŞMASI KÜP" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -907,8 +904,7 @@
                 </div>
             </div>
 
-            <!-- KALIP ÇALIŞMALARI -->
-            <div class="art-card" data-category="kalip">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-kalemlik" src="kalemlik1.jpeg" alt="KALEMLİK" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -926,26 +922,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="kalip">
-                <div class="image-container">
-                    <img id="img-taki" src="takı1.jpeg" alt="TAKI KUTUSU" class="art-image" onclick="openLightbox(this.src)">
-                </div>
-                <div class="thumbnails">
-                    <img src="takı1.jpeg" class="thumb active-thumb" onclick="changeImage('img-taki', 'takı1.jpeg', this)">
-                    <img src="takı1.2.jpeg" class="thumb" onclick="changeImage('img-taki', 'takı1.2.jpeg', this)">
-                    <img src="takı1.3.jpeg" class="thumb" onclick="changeImage('img-taki', 'takı1.3.jpeg', this)">
-                </div>
-                <div class="art-info">
-                    <div class="art-title">“TAKI KUTUSU”</div>
-                    <div class="art-meta"><strong>Ölçü:</strong> 13 x 17 x 13 cm</div>
-                    <div class="art-meta"><strong>Teknik:</strong> Döküm</div>
-                    <div class="art-meta"><strong>Yıl:</strong> 2026</div>
-                    <span class="category-badge">Kalıp Çalışması</span>
-                </div>
-            </div>
-
-            <!-- KARIŞIK MALZEME -->
-            <div class="art-card" data-category="karisik">
+            <div class="art-card" data-year="24-25">
                 <div class="image-container">
                     <img id="img-melek" src="melek1.jpeg" alt="MELEK" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -963,7 +940,26 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="karisik">
+            <!-- 2026 ÇALIŞMALARI -->
+            <div class="art-card" data-year="2026">
+                <div class="image-container">
+                    <img id="img-taki" src="takı1.jpeg" alt="TAKI KUTUSU" class="art-image" onclick="openLightbox(this.src)">
+                </div>
+                <div class="thumbnails">
+                    <img src="takı1.jpeg" class="thumb active-thumb" onclick="changeImage('img-taki', 'takı1.jpeg', this)">
+                    <img src="takı1.2.jpeg" class="thumb" onclick="changeImage('img-taki', 'takı1.2.jpeg', this)">
+                    <img src="takı1.3.jpeg" class="thumb" onclick="changeImage('img-taki', 'takı1.3.jpeg', this)">
+                </div>
+                <div class="art-info">
+                    <div class="art-title">“TAKI KUTUSU”</div>
+                    <div class="art-meta"><strong>Ölçü:</strong> 13 x 17 x 13 cm</div>
+                    <div class="art-meta"><strong>Teknik:</strong> Döküm</div>
+                    <div class="art-meta"><strong>Yıl:</strong> 2026</div>
+                    <span class="category-badge">Kalıp Çalışması</span>
+                </div>
+            </div>
+
+            <div class="art-card" data-year="2026">
                 <div class="image-container">
                     <img id="img-varyok" src="varyok1.jpeg" alt="VAROLMAYAN" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -981,8 +977,7 @@
                 </div>
             </div>
 
-            <!-- BİTİRME PROJESİ -->
-            <div class="art-card" data-category="bitirme">
+            <div class="art-card" data-year="2026">
                 <div class="image-container">
                     <img id="img-varolusa" src="var1.jpeg" alt="VAROLUŞ" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -1002,7 +997,7 @@
                 </div>
             </div>
 
-            <div class="art-card" data-category="bitirme">
+            <div class="art-card" data-year="2026">
                 <div class="image-container">
                     <img id="img-caba" src="caba1.jpeg" alt="ÇABA" class="art-image" onclick="openLightbox(this.src)">
                 </div>
@@ -1024,7 +1019,7 @@
             </div>
 
             <!-- DAHA FAZLA ESER / ARŞİV KARTI -->
-            <div class="archive-card" data-category="all">
+            <div class="archive-card" data-year="all">
                 <h3>Daha Fazla Eser & Arşiv</h3>
                 <p>Seçkide yer alanların yanı sıra, atölye süreçleri ve diğer tüm özgün seramik eserleri keşfetmek için arşivi inceleyin.</p>
                 <a href="https://www.instagram.com/san.ceramic_?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==" target="_blank" class="archive-btn">Instagram'da Keşfet</a>
@@ -1130,18 +1125,18 @@
 
     <!-- RESMİ FOOTER -->
     <footer>
-        <div class="footer-title">SANEM SÖZEN — SERAMİK PORTFOLYO</div>
+        <div class="footer-title">SANEM SÖZEN — SERAMİK SANATÇISI</div>
         <p>Hacettepe Üniversitesi Güzel Sanatlar Enstitüsü | Seramik ve Cam Anasanat Dalı</p>
         <div class="copyright">
             © 2026 Sanem Sözen. Tüm hakları saklıdır.<br>
-            Sitede yer alan tüm görsel içerik ve özgün eser tasarımları sanatçıya aittir; izinsiz kopyalanamaz ve kullanılamaz.
+            Bu web sitesi <strong>Burak Mert Şahin</strong> tarafından tasarlanmış ve kodlanmıştır.
         </div>
     </footer>
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
-        // Kategori Filtreleme
-        function filterCategory(category) {
+        // Yıla Göre Filtreleme
+        function filterYear(year) {
             const cards = document.querySelectorAll('.art-card, .archive-card');
             const buttons = document.querySelectorAll('.nav-btn');
 
@@ -1149,7 +1144,7 @@
             event.target.classList.add('active');
 
             cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category || card.classList.contains('archive-card')) {
+                if (year === 'all' || card.getAttribute('data-year') === year || card.classList.contains('archive-card')) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
